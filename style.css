@@ -1,0 +1,53 @@
+* {
+    text-decoration: none;
+}
+
+nav {
+    font-family: 'baskerville';
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    justify-content: center;
+    color: #333;
+    position: relative;
+}
+nav a {
+    color: #333;
+}
+nav :first-child {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* themes light, dark and aqua */
+
+    /* navigation */
+
+        /* light */
+
+nav.light-theme {
+
+}
+
+        /* dark */
+
+nav.dark-theme a {
+    color: #fff;
+}
+
+        /* aqua */
+
+nav.aqua-theme {
+}
+
+/* body */
+
+body.aqua-theme {
+    background-color: #5ECCB0;
+}
+
+body.dark-theme {
+    background-color: #171717;
+}

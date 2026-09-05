@@ -22,7 +22,6 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
   const [overOpen, setOverOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const isOverSection = pathname === "/over" || pathname.startsWith("/over/");
   const showOverBar = pathname === "/over";
 
   const closeMobile = () => {
@@ -37,7 +36,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`relative hidden md:flex items-center justify-center gap-8 py-8 px-4 font-sans font-bold ${text} ${isOverSection ? "border-b border-[#ccc]" : ""}`}
+        className={`relative hidden md:flex items-center justify-center gap-8 border-b border-[#ccc] py-8 px-4 font-sans font-bold ${text}`}
       >
         <Link href="/" className="absolute left-4 top-1/2 -translate-y-1/2">
           <Image src={logo} alt="jfvd" width={36} height={36} />

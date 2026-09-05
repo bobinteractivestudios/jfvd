@@ -33,7 +33,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`relative hidden md:flex items-center justify-center gap-8 py-8 px-4 font-sans ${text}`}
+        className={`relative hidden md:flex items-center justify-center gap-8 py-8 px-4 font-sans font-bold ${text}`}
       >
         <Link href="/" className="absolute left-4 top-1/2 -translate-y-1/2">
           <Image src={logo} alt="jfvd" width={36} height={36} />
@@ -56,7 +56,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -8 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex items-center gap-2 text-[#888]"
+                className="flex items-center gap-2 font-normal text-[#888]"
               >
                 <span>—</span>
                 <Link href="/over/bestuur">BESTUUR</Link>
@@ -115,7 +115,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
               variants={{ open: { transition: { staggerChildren: 0.08 } } }}
               initial="closed"
               animate="open"
-              className="flex flex-col items-start gap-6 px-8 pt-28 font-sans text-lg text-[#333]"
+              className="flex flex-col items-start gap-6 px-8 pt-28 font-sans font-bold text-lg text-[#333]"
             >
               <motion.li
                 variants={doorItem}
@@ -146,7 +146,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.25 }}
-                      className="flex flex-col gap-2 overflow-hidden pt-2 pl-4 text-base text-[#888]"
+                      className="flex flex-col gap-2 overflow-hidden pt-2 pl-4 text-base font-normal text-[#888]"
                     >
                       <Link href="/over/bestuur" onClick={closeMobile}>
                         — BESTUUR

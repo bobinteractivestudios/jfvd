@@ -50,12 +50,8 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
 
       {/* Secondary bar, only on the OVER section */}
       {showOverBar && (
-        <div
-          className={`hidden md:flex items-center justify-center gap-3 py-3 text-sm font-bold text-[#888]`}
-        >
-          <span>—</span>
+        <div className="hidden items-center justify-center gap-6 border-t border-[#ccc] py-2 text-sm font-bold text-[#888] md:flex">
           <Link href="/over/bestuur">BESTUUR</Link>
-          <span>—</span>
           <Link href="/over/organisatie">ORGANISATIE</Link>
         </div>
       )}

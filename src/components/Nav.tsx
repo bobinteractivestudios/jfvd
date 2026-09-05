@@ -18,7 +18,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className={`relative flex items-center justify-center gap-8 py-8 px-4 font-['baskerville'] ${text}`}
+      className={`relative flex items-center justify-center gap-8 py-8 px-4 font-sans ${text}`}
     >
       <Link href="/" className="absolute left-4 top-1/2 -translate-y-1/2">
         <Image src={logo} alt="jfvd" width={36} height={36} />

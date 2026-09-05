@@ -22,7 +22,8 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
   const [overOpen, setOverOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const showOverBar = pathname === "/over" || pathname.startsWith("/over/");
+  const isOverSection = pathname === "/over" || pathname.startsWith("/over/");
+  const showOverBar = pathname === "/over";
 
   const closeMobile = () => {
     setMobileOpen(false);
@@ -36,7 +37,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`relative hidden md:flex items-center justify-center gap-8 py-8 px-4 font-sans font-bold ${text}`}
+        className={`relative hidden md:flex items-center justify-center gap-8 py-8 px-4 font-sans font-bold ${text} ${isOverSection ? "border-b border-[#ccc]" : ""}`}
       >
         <Link href="/" className="absolute left-4 top-1/2 -translate-y-1/2">
           <Image src={logo} alt="jfvd" width={36} height={36} />
@@ -48,9 +49,9 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
         <Link href="/contact">CONTACT</Link>
       </motion.nav>
 
-      {/* Secondary bar, only on the OVER section */}
+      {/* Secondary bar, only on the OVER index page */}
       {showOverBar && (
-        <div className="hidden items-center justify-center gap-6 border-t border-[#ccc] py-2 text-sm font-bold text-[#888] md:flex">
+        <div className="hidden items-center justify-center gap-6 py-2 text-sm font-bold text-[#888] md:flex">
           <Link href="/over/bestuur">BESTUUR</Link>
           <Link href="/over/organisatie">ORGANISATIE</Link>
         </div>

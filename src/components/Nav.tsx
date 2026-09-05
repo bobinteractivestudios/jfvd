@@ -46,9 +46,9 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
               className="flex items-center gap-2 text-[#888]"
             >
               <span>—</span>
-              <Link href="/over/bestuur">bestuur</Link>
+              <Link href="/over/bestuur">BESTUUR</Link>
               <span>—</span>
-              <Link href="/over/organisatie">organisatie</Link>
+              <Link href="/over/organisatie">ORGANISATIE</Link>
             </motion.span>
           )}
         </AnimatePresence>

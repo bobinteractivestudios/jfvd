@@ -22,7 +22,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
   const [overOpen, setOverOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const showOverBar = pathname === "/over";
+  const showOverBar = pathname === "/over" || pathname.startsWith("/over/");
 
   const closeMobile = () => {
     setMobileOpen(false);
@@ -48,7 +48,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
         <Link href="/contact">CONTACT</Link>
       </motion.nav>
 
-      {/* Secondary bar, only on the OVER index page */}
+      {/* Secondary bar, on OVER and its sub-pages */}
       {showOverBar && (
         <div className="hidden items-center justify-center gap-6 py-2 text-sm font-bold text-[#888] md:flex">
           <Link href="/over/bestuur">BESTUUR</Link>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 
 const themes = {
@@ -16,12 +17,12 @@ const doorItem: Variants = {
   open: { rotateY: 0, opacity: 1 },
 };
 
-const layoutTransition = { duration: 0.3, ease: "easeInOut" } as const;
-
 export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
   const { text, logo } = themes[theme];
   const [overOpen, setOverOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const showOverBar = pathname === "/over" || pathname.startsWith("/over/");
 
   const closeMobile = () => {
     setMobileOpen(false);
@@ -40,51 +41,24 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
         <Link href="/" className="absolute left-4 top-1/2 -translate-y-1/2">
           <Image src={logo} alt="jfvd" width={36} height={36} />
         </Link>
-        <motion.span layout transition={layoutTransition}>
-          <Link href="/events">EVENTS</Link>
-        </motion.span>
-        <motion.div
-          layout
-          transition={layoutTransition}
-          className="flex items-center gap-2"
-        >
-          <button
-            type="button"
-            onClick={() => setOverOpen((open) => !open)}
-            aria-expanded={overOpen}
-            className="cursor-pointer"
-          >
-            OVER
-          </button>
-          <AnimatePresence mode="popLayout">
-            {overOpen && (
-              <motion.span
-                key="over-submenu"
-                layout
-                initial={{ opacity: 0, x: -8 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -8 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex items-center gap-2 text-[#888]"
-              >
-                <span>—</span>
-                <Link href="/over/bestuur">BESTUUR</Link>
-                <span>—</span>
-                <Link href="/over/organisatie">ORGANISATIE</Link>
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </motion.div>
-        <motion.span layout transition={layoutTransition}>
-          <Link href="/magazine">MAGAZINE</Link>
-        </motion.span>
-        <motion.span layout transition={layoutTransition}>
-          <Link href="/shop">SHOP</Link>
-        </motion.span>
-        <motion.span layout transition={layoutTransition}>
-          <Link href="/contact">CONTACT</Link>
-        </motion.span>
+        <Link href="/events">EVENTS</Link>
+        <Link href="/over">OVER</Link>
+        <Link href="/magazine">MAGAZINE</Link>
+        <Link href="/shop">SHOP</Link>
+        <Link href="/contact">CONTACT</Link>
       </motion.nav>
+
+      {/* Secondary bar, only on the OVER section */}
+      {showOverBar && (
+        <div
+          className={`hidden md:flex items-center justify-center gap-3 py-3 text-sm font-bold text-[#888]`}
+        >
+          <span>—</span>
+          <Link href="/over/bestuur">BESTUUR</Link>
+          <span>—</span>
+          <Link href="/over/organisatie">ORGANISATIE</Link>
+        </div>
+      )}
 
       {/* Mobile top bar */}
       <div

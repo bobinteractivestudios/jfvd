@@ -56,15 +56,16 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
           >
             OVER
           </button>
-          <AnimatePresence>
+          <AnimatePresence mode="popLayout">
             {overOpen && (
               <motion.span
                 key="over-submenu"
+                layout
                 initial={{ opacity: 0, x: -8 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -8 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex items-center gap-2 font-normal text-[#888]"
+                className="flex items-center gap-2 text-[#888]"
               >
                 <span>—</span>
                 <Link href="/over/bestuur">BESTUUR</Link>
@@ -160,7 +161,7 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.25 }}
-                      className="flex flex-col gap-2 overflow-hidden pt-2 pl-4 text-base font-normal text-[#888]"
+                      className="flex flex-col gap-2 overflow-hidden pt-2 pl-4 text-base text-[#888]"
                     >
                       <Link href="/over/bestuur" onClick={closeMobile}>
                         — BESTUUR

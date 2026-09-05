@@ -16,6 +16,8 @@ const doorItem: Variants = {
   open: { rotateY: 0, opacity: 1 },
 };
 
+const layoutTransition = { duration: 0.3, ease: "easeInOut" } as const;
+
 export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
   const { text, logo } = themes[theme];
   const [overOpen, setOverOpen] = useState(false);
@@ -38,8 +40,14 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
         <Link href="/" className="absolute left-4 top-1/2 -translate-y-1/2">
           <Image src={logo} alt="jfvd" width={36} height={36} />
         </Link>
-        <Link href="/events">EVENTS</Link>
-        <div className="flex items-center gap-2">
+        <motion.span layout transition={layoutTransition}>
+          <Link href="/events">EVENTS</Link>
+        </motion.span>
+        <motion.div
+          layout
+          transition={layoutTransition}
+          className="flex items-center gap-2"
+        >
           <button
             type="button"
             onClick={() => setOverOpen((open) => !open)}
@@ -65,10 +73,16 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
               </motion.span>
             )}
           </AnimatePresence>
-        </div>
-        <Link href="/magazine">MAGAZINE</Link>
-        <Link href="/shop">SHOP</Link>
-        <Link href="/contact">CONTACT</Link>
+        </motion.div>
+        <motion.span layout transition={layoutTransition}>
+          <Link href="/magazine">MAGAZINE</Link>
+        </motion.span>
+        <motion.span layout transition={layoutTransition}>
+          <Link href="/shop">SHOP</Link>
+        </motion.span>
+        <motion.span layout transition={layoutTransition}>
+          <Link href="/contact">CONTACT</Link>
+        </motion.span>
       </motion.nav>
 
       {/* Mobile top bar */}

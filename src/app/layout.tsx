@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto, Playfair_Display } from "next/font/google";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -25,7 +26,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${roboto.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

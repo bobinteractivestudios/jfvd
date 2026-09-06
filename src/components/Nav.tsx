@@ -45,7 +45,6 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
         <Link href="/over">OVER</Link>
         <Link href="/magazine">MAGAZINE</Link>
         <Link href="/shop">SHOP</Link>
-        <Link href="/contact">CONTACT</Link>
       </motion.nav>
 
       {/* Secondary bar, on OVER and its sub-pages */}
@@ -159,15 +158,6 @@ export function Nav({ theme = "light" }: { theme?: keyof typeof themes }) {
               >
                 <Link href="/shop" onClick={closeMobile}>
                   SHOP
-                </Link>
-              </motion.li>
-              <motion.li
-                variants={doorItem}
-                transition={{ duration: 0.45, ease: "easeOut" }}
-                style={{ transformPerspective: 800, transformOrigin: "0% 50%" }}
-              >
-                <Link href="/contact" onClick={closeMobile}>
-                  CONTACT
                 </Link>
               </motion.li>
             </motion.ul>

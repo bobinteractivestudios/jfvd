@@ -6,7 +6,7 @@ export default function Home() {
     <div className="min-h-screen">
       <Nav theme="light" />
       <div className="bg-[#333] p-3 sm:p-5 md:p-8">
-        <div className="relative aspect-[3/2] w-full sm:aspect-[16/9]">
+        <div className="relative mx-auto aspect-[2/1] w-full max-w-[768px]">
           <Image
             src="/hero.jpg"
             alt="JFVD bijeenkomst"
